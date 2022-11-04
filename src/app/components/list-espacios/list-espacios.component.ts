@@ -1,4 +1,4 @@
-import { EspacioService } from './../../services/espacio.service';
+import { EspaciosService } from './../../services/espacio.service';
 import { Espacio } from './../../models/espacio';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListEspaciosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'estacionamiento', 'piso', 'numero', 'estado', 'actions'];
   dataSource = new MatTableDataSource<Espacio>();
-  constructor(private EspacioService: EspacioService,
+  constructor(private EspaciosService: EspaciosService,
     private snackBar:MatSnackBar) {}
 
   ngOnInit(): void {
@@ -25,9 +25,10 @@ export class ListEspaciosComponent implements OnInit {
   }
 
   getEspacios() {
-    this.EspacioService.getEspacios().subscribe((data: Espacio[]) => {
+    this.EspaciosService.getEspacios().subscribe((data: Espacio[]) => {
       this.dataSource = new MatTableDataSource(data);
     });
   }
 
+  
 }

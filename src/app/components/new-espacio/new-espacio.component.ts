@@ -1,4 +1,4 @@
-import { EspacioService } from './../../services/espacio.service';
+import { EspaciosService } from './../../services/espacio.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +16,7 @@ export class NewEspacioComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private EspacioService:EspacioService,
+    private EspaciosService:EspaciosService,
     private router:Router,
     private snackBar:MatSnackBar
   ) { }
@@ -39,13 +39,13 @@ export class NewEspacioComponent implements OnInit {
       estado:this.myForm.get('estado')?.value,
     };
 
-    this.EspacioService.newEspacio(espacios)
+   this.EspaciosService.newEspacios(espacios)
         .subscribe({
           next: (data)=>{
             this.snackBar.open("Registro OK",'',{
               duration:3000,
             })
-            this.router.navigate(['/business/espacios']);
+            this.router.navigate(['/espacios']);
           },
           error:(err)=>{
             console.log(err);
